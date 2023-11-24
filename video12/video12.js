@@ -14,3 +14,8 @@ const person = {
     }
 };
 console.log(person.chao(), `Name: `, person.firstName);
+console.log(person.chao(), person['lastName'], 'eye ', person['eyeColor']);
+let e = 'lastName';
+person[e] = 'Nguyen';
+console.log(person.chao(), `Ho khai sinh: `, person['lastName']);
+// gan lai mot thanh phan cua doi tuong
