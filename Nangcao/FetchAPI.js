@@ -1,5 +1,7 @@
-// long nhieu promise => vong load vo han
-const callBackChainingPromise = (err, data) => {
+// https://jsonplaceholder.typicode.com/ -->Xem them trang nay
+// fetch la mot promise 
+
+const callBackFetch = (err, data) => {
     if (err) {
         console.log("has error: ", err);
     }
@@ -9,7 +11,7 @@ const callBackChainingPromise = (err, data) => {
 }
 
 // Callbacl la goi mot ham trong mot ham khac
-function getTodos(id, callBackChainingPromise) {
+function getTodos(id, callBackFetch) {
 
     return new Promise((resolve, reject) => {
         var request = new XMLHttpRequest();
@@ -28,28 +30,11 @@ function getTodos(id, callBackChainingPromise) {
 
 
 }
-// gettodos khai bao tren la mot promise
-// Chi can mot ham catch
-getTodos(4).then(data4 => {
-    console.log("data promise 1: ", data4);
-    return getTodos(5);
-}).
-then(data5 => {
-    console.log("data promise 2: ", data5);
-    return getTodos(6);
-}).
-then(data6 => {
-    console.log("data promise 3: ", data6);
-}).
-catch(err => {
-    console.log("has error promise: ", err);
-})
 
-// promiseResult()
-//     .then(data => {
-//         console.log("data promises", data);
-//     })
-//     .catch(error => {
-//         console.log("error", error)
-//     });
-// // toan tu then va catch la lay data tu function promise khai baso tren
+fetch('https://jsonplaceholder.typicode.com/todos/4')
+    .then(reponse => {
+        return reponse.json()
+    })
+    .then(data => {
+        console.log("data fetch: ", data);
+    })
